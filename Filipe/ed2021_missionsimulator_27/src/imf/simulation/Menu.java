@@ -48,7 +48,6 @@ public class Menu extends MyFile {
         this.mission = new Mission();
         chooseFile();
         menu1();
-
     }
 
     /**

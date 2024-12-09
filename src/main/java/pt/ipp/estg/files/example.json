@@ -1,0 +1,68 @@
+{
+  "edificio": {
+    "divisoes": {
+      "Sala1": {
+        "nome": "Entrada Principal",
+        "tipo": "entrada",
+        "itens": [],
+        "inimigos": []
+      },
+      "Sala2": {
+        "nome": "Corredor Lateral",
+        "tipo": "comum",
+        "itens": ["vest"],
+        "inimigos": [
+          {
+            "nome": "Criminoso 1",
+            "poder": 20,
+            "divisao": "Sala2"
+          }
+        ]
+      },
+      "Sala3": {
+        "nome": "Sala do Alvo",
+        "tipo": "alvo",
+        "itens": ["medkit"],
+        "inimigos": [
+          {
+            "nome": "Criminoso 2",
+            "poder": 30,
+            "divisao": "Sala3"
+          }
+        ]
+      }
+    }
+  },
+  "ligacoes": {
+    "Sala1": ["Sala2"],
+    "Sala2": ["Sala1", "Sala3"],
+    "Sala3": ["Sala2"],
+    "entradas-saidas": ["Sala1"]
+  },
+  "inimigos": [
+    {
+      "nome": "Criminoso 1",
+      "poder": 20,
+      "divisao": "Sala2"
+    },
+    {
+      "nome": "Criminoso 2",
+      "poder": 30,
+      "divisao": "Sala3"
+    }
+  ],
+  "alvo": {
+    "divisao": "Sala3",
+    "tipo": "refem"
+  },
+  "itens": {
+    "medkit": {
+      "localizacao": ["Sala1", "Sala3"],
+      "pontos": 25
+    },
+    "vest": {
+      "localizacao": ["Sala2"],
+      "pontos": 50
+    }
+  }
+}
