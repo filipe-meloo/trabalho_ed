@@ -1,0 +1,76 @@
+[
+  {
+    "lifePoints": 100.0,
+    "path": [
+      "Garagem",
+      "Hall",
+      "Garagem"
+    ],
+    "getTarget": false
+  },
+  {
+    "lifePoints": 100.0,
+    "path": [
+      "Garagem",
+      "Hall",
+      "Escada",
+      "Hall",
+      "Escada",
+      "Hall 2",
+      "Cozinha",
+      "Varanda",
+      "Quarto 2",
+      "Varanda",
+      "Cozinha",
+      "Hall 2",
+      "Escada",
+      "Hall",
+      "Garagem"
+    ],
+    "getTarget": true
+  },
+  {
+    "lifePoints": 40.0,
+    "path": [
+      "Saída",
+      "Hall 2",
+      "Saída"
+    ],
+    "getTarget": false
+  },
+  {
+    "lifePoints": 40.0,
+    "path": [
+      "Saída",
+      "Hall 2",
+      "Saída"
+    ],
+    "getTarget": false
+  },
+  {
+    "lifePoints": 10.0,
+    "path": [
+      "Saída",
+      "Hall 2",
+      "Hall 3",
+      "Quarto 2",
+      "Hall 3",
+      "Hall 2",
+      "Saída"
+    ],
+    "getTarget": true
+  },
+  {
+    "lifePoints": 10.0,
+    "path": [
+      "Saída",
+      "Hall 2",
+      "Hall 3",
+      "Quarto 2",
+      "Hall 3",
+      "Hall 2",
+      "Saída"
+    ],
+    "getTarget": true
+  }
+]

@@ -1,0 +1,21 @@
+[
+  {
+    "lifePoints": 70.0,
+    "path": [
+      "Garagem",
+      "Escada 1",
+      "Garagem"
+    ],
+    "getTarget": false
+  },
+  {
+    "lifePoints": 55.0,
+    "path": [
+      "Garagem",
+      "Escada de Emergência",
+      "Escritório 1",
+      "Escada de Emergência"
+    ],
+    "getTarget": true
+  }
+]

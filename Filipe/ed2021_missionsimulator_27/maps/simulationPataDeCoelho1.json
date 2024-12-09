@@ -1,0 +1,10 @@
+[
+  {
+    "lifePoints": 100.0,
+    "path": [
+      "Garagem",
+      "Escada de Emergência"
+    ],
+    "getTarget": false
+  }
+]
