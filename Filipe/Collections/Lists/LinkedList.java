@@ -2,12 +2,14 @@ package Collections.Lists;
 
 import Collections.Exceptions.EmptyCollectionException;
 import Collections.Exceptions.NoSuchElementException;
-
 import java.util.Iterator;
 
 public class LinkedList<T> implements ListADT<T>, Iterable<T> {
     protected Node<T> head, tail;
     protected int size, modCount;
+
+    private static final String EMPTY_LIST_EXCEPTION_MESSAGE = "The list is empty.";
+    private static final String ELEMENT_NOT_FOUND_EXCEPTION_MESSAGE = "Element not found in list.";
 
     public LinkedList() {
         this.head = null;
@@ -15,37 +17,20 @@ public class LinkedList<T> implements ListADT<T>, Iterable<T> {
         this.size = 0;
     }
 
-
-    /**
-     * Removes and returns the first element in the list.
-     *
-     * @return The first element in the list.
-     * @throws EmptyCollectionException if the list is empty.
-     */
     @Override
     public T removeFirst() throws EmptyCollectionException {
-        if (isEmpty()) {
-            throw new EmptyCollectionException();
-        }
-        T removed = head.getElement();
+        ensureNotEmpty();
+        T removedElement = head.getElement();
         head = head.getNext();
         size--;
         modCount++;
-        return removed;
+        return removedElement;
     }
 
-    /**
-     * Removes and returns the last element in the list.
-     *
-     * @return The last element in the list.
-     * @throws EmptyCollectionException if the list is empty.
-     */
     @Override
     public T removeLast() throws EmptyCollectionException {
-        if (isEmpty()) {
-            throw new EmptyCollectionException();
-        }
-        T removed = tail.getElement();
+        ensureNotEmpty();
+        T removedElement = tail.getElement();
         Node<T> current = head;
         while (current.getNext() != tail) {
             current = current.getNext();
@@ -54,40 +39,44 @@ public class LinkedList<T> implements ListADT<T>, Iterable<T> {
         tail = current;
         size--;
         modCount++;
-        return removed;
+        return removedElement;
     }
 
-    /**
-     * Removes a specified element from the list.
-     *
-     * @param element The element to be removed.
-     * @return The removed element.
-     * @throws EmptyCollectionException if the list is empty.
-     * @throws NoSuchElementException   if the specified element is not found in the list.
-     */
     public T remove(T element) throws EmptyCollectionException, NoSuchElementException {
-        if (isEmpty()) {
-            throw new EmptyCollectionException();
-        }
+        ensureNotEmpty();
         if (!contains(element)) {
-            throw new NoSuchElementException();
+            throw new NoSuchElementException(ELEMENT_NOT_FOUND_EXCEPTION_MESSAGE);
         }
-        T removed;
+        T removedElement;
         Node<T> current = head;
+
         if (current.getElement().equals(element)) {
-            removed = removeFirst();
+            return removeFirst();
         } else if (tail.getElement().equals(element)) {
-            removed = removeLast();
-        } else {
-            while (!current.getNext().getElement().equals(element)) {
-                current = current.getNext();
-            }
-            removed = current.getNext().getElement();
-            current.setNext(current.getNext().getNext());
-            size--;
-            modCount++;
+            return removeLast();
         }
-        return removed;
+
+        Node<T> previous = findNodeBefore(element);
+        removedElement = previous.getNext().getElement();
+        previous.setNext(previous.getNext().getNext());
+        size--;
+        modCount++;
+
+        return removedElement;
+    }
+
+    private void ensureNotEmpty() throws EmptyCollectionException {
+        if (isEmpty()) {
+            throw new EmptyCollectionException(EMPTY_LIST_EXCEPTION_MESSAGE);
+        }
+    }
+
+    private Node<T> findNodeBefore(T element) {
+        Node<T> current = head;
+        while (!current.getNext().getElement().equals(element)) {
+            current = current.getNext();
+        }
+        return current;
     }
 
     /**
@@ -216,7 +205,7 @@ public class LinkedList<T> implements ListADT<T>, Iterable<T> {
      */
 
     public T[] toArray() {
-        T[] result = (T[]) new Comparable[size()];
+        T[] result = (T[]) new Object[size()];
         Node<T> current = head;
         for (int i = 0; i < size(); i++) {
             result[i] = current.getElement();

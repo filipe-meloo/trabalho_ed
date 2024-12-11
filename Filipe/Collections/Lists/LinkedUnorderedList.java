@@ -1,5 +1,4 @@
 package Collections.Lists;
-
 import Collections.Exceptions.EmptyCollectionException;
 import Collections.Exceptions.NoSuchElementException;
 
@@ -11,7 +10,7 @@ public class LinkedUnorderedList<T> extends LinkedList<T> implements UnorderedLi
      * @param element The element to be added to the front of the list.
      */
     @Override
-    public void addToFront(T element) {
+    public void addToFront(final T element) {
         Node<T> newNode = new Node<>(element);
         if (isEmpty()) {
             head = newNode;
@@ -20,8 +19,7 @@ public class LinkedUnorderedList<T> extends LinkedList<T> implements UnorderedLi
             newNode.setNext(head);
             head = newNode;
         }
-        size++;
-        modCount++;
+        incrementCounters();
     }
 
     /**
@@ -30,7 +28,7 @@ public class LinkedUnorderedList<T> extends LinkedList<T> implements UnorderedLi
      * @param element The element to be added to the rear of the list.
      */
     @Override
-    public void addToRear(T element) {
+    public void addToRear(final T element) {
         Node<T> newNode = new Node<>(element);
         if (isEmpty()) {
             head = newNode;
@@ -38,8 +36,7 @@ public class LinkedUnorderedList<T> extends LinkedList<T> implements UnorderedLi
             tail.setNext(newNode);
         }
         tail = newNode;
-        size++;
-        modCount++;
+        incrementCounters();
     }
 
     /**
@@ -51,28 +48,31 @@ public class LinkedUnorderedList<T> extends LinkedList<T> implements UnorderedLi
      * @throws NoSuchElementException   if the target element is not found in the list.
      */
     @Override
-    public void addAfter(T element, T target) throws EmptyCollectionException, NoSuchElementException {
+    public void addAfter(final T element, final T target) throws EmptyCollectionException, NoSuchElementException {
         if (isEmpty()) throw new EmptyCollectionException();
         if (!contains(target)) throw new NoSuchElementException();
+
         Node<T> newNode = new Node<>(element);
         Node<T> current = head;
         while (!current.getElement().equals(target)) {
             current = current.getNext();
         }
+
         newNode.setNext(current.getNext());
         current.setNext(newNode);
+
         if (newNode.getNext() == null) {
             tail = newNode;
         }
-        size++;
-        modCount++;
+
+        incrementCounters();
     }
 
     /**
      * Inverts the order of elements in the list.
      */
     public void invert() {
-        this.head = invert(head);
+        this.head = invertListRecursively(head);
     }
 
     /**
@@ -81,11 +81,18 @@ public class LinkedUnorderedList<T> extends LinkedList<T> implements UnorderedLi
      * @param node The current node in the recursive traversal.
      * @return The new head of the inverted list.
      */
-    private Node<T> invert(Node<T> node) {
+    private Node<T> invertListRecursively(Node<T> node) {
         if (node == null || node.getNext() == null) return node;
-        Node<T> newHead = invert(node.getNext());
+
+        Node<T> newHead = invertListRecursively(node.getNext());
         node.getNext().setNext(node);
         node.setNext(null);
+
         return newHead;
+    }
+
+    private void incrementCounters() {
+        size++;
+        modCount++;
     }
 }

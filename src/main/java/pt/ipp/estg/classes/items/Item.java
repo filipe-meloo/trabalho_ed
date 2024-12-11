@@ -2,12 +2,20 @@ package pt.ipp.estg.classes.items;
 
 public class Item {
 
+    private String name;
     private String location;
-    private int points;
 
-    public Item(String location, int points) {
+    public Item(String name, String location) {
+        this.name = name;
         this.location = location;
-        this.points = points;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLocation() {
@@ -16,14 +24,6 @@ public class Item {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
     }
 
 }
