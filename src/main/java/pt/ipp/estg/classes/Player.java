@@ -2,6 +2,7 @@ package pt.ipp.estg.classes;
 
 import Exceptions.EmptyCollectionException;
 import Structures.ArrayStack;
+import Structures.Graph;
 import pt.ipp.estg.classes.items.Item;
 
 public class Player {
@@ -10,6 +11,7 @@ public class Player {
 
     private int health;
     private int power;
+    private String currentDivision;
 
     private ArrayStack<Item> inventory;
 
@@ -63,5 +65,15 @@ public class Player {
         return this.inventory.size();
     }
 
+    public String getCurrentDivision() {
+        return currentDivision;
+    }
+
+    public boolean moveTo(String division, Graph<Division> building) {
+
+        //Metodo para verificar se a divisao é ligada ou nao
+
+        return true;
+    }
 
 }
