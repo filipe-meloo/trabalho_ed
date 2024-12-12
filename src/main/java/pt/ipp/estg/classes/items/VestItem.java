@@ -1,6 +1,7 @@
 package pt.ipp.estg.classes.items;
 
 import pt.ipp.estg.classes.Division;
+import pt.ipp.estg.classes.entities.Player;
 import pt.ipp.estg.enums.ItemType;
 
 public class VestItem extends UsableAbstractItem {
@@ -17,8 +18,8 @@ public class VestItem extends UsableAbstractItem {
     }
 
     @Override
-    public void use() {
-
+    public void use(Player player) {
+        player.heal(getPoints());
     }
 
 }

@@ -45,7 +45,7 @@ public class Entity {
         this.health -= damage;
     }
 
-    protected void heal(int heal) {
+    public void heal(int heal) {
         this.health += heal;
     }
 }

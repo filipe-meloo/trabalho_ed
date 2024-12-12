@@ -1,6 +1,7 @@
 package pt.ipp.estg.interfaces;
 
 import pt.ipp.estg.classes.Division;
+import pt.ipp.estg.classes.entities.Player;
 import pt.ipp.estg.enums.ItemType;
 
 public interface Item {
@@ -8,5 +9,5 @@ public interface Item {
     Division getLocation();
     ItemType getType();
     int getPoints();
-    void use();
+    void use(Player player);
 }

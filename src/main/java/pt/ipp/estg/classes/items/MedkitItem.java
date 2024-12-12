@@ -1,6 +1,7 @@
 package pt.ipp.estg.classes.items;
 
 import pt.ipp.estg.classes.Division;
+import pt.ipp.estg.classes.entities.Player;
 import pt.ipp.estg.enums.ItemType;
 
 public class MedkitItem extends UsableAbstractItem {
@@ -16,7 +17,12 @@ public class MedkitItem extends UsableAbstractItem {
     }
 
     @Override
-    public void use() {
+    public void use(Player player) {
+        if (player.getHealth() + getPoints() > 100) {
+            player.heal(100 - player.getHealth());
+            return;
+        }
 
+        player.heal(getPoints());
     }
 }
