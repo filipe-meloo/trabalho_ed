@@ -2,6 +2,8 @@ package pt.ipp.estg.classes;
 
 import Structures.ArrayList;
 import Structures.Graph;
+import pt.ipp.estg.classes.entities.Enemy;
+import pt.ipp.estg.classes.entities.Player;
 
 public class Mission {
 

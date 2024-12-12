@@ -3,7 +3,7 @@ package pt.ipp.estg;
 import Structures.ArrayList;
 import Structures.Graph;
 import pt.ipp.estg.classes.Division;
-import pt.ipp.estg.classes.Enemy;
+import pt.ipp.estg.classes.entities.Enemy;
 import pt.ipp.estg.classes.Mission;
 import pt.ipp.estg.classes.Target;
 import pt.ipp.estg.files.Import;
@@ -65,7 +65,7 @@ public class TestImport {
                                 System.out.println("    * Nome: " + enemy.getName());
                                 System.out.println("      Poder: " + enemy.getPower());
                                 System.out.println("      Vida: " + enemy.getHealth());
-                                System.out.println("      Divisão inicial: " + enemy.getDivision());
+                                System.out.println("      Divisão inicial: " + enemy.getCurrentDivision());
                             }
                         }
                     }

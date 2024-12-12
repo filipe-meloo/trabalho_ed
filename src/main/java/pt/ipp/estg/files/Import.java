@@ -3,16 +3,18 @@ package pt.ipp.estg.files;
 import Structures.ArrayList;
 import Structures.Graph;
 import pt.ipp.estg.classes.Division;
-import pt.ipp.estg.classes.Enemy;
+import pt.ipp.estg.classes.entities.Enemy;
 import pt.ipp.estg.classes.Mission;
 import pt.ipp.estg.classes.Target;
 import pt.ipp.estg.classes.items.Item;
 import pt.ipp.estg.classes.items.MedkitItem;
+import pt.ipp.estg.classes.items.UsableAbstractItem;
 import pt.ipp.estg.classes.items.VestItem;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import pt.ipp.estg.exceptions.IONotRecognizedException;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -87,13 +89,13 @@ public class Import {
 
                 Division division = findDivisionByName(divisionsList, divisionName);
                 if (division != null) {
-                    Item itemToAdd;
+                    UsableAbstractItem itemToAdd;
                     if ("kit de vida".equalsIgnoreCase(itemType)) {
-                        itemToAdd = new MedkitItem(divisionName);
+                        itemToAdd = new MedkitItem(division);
                     } else if ("colete".equalsIgnoreCase(itemType)) {
-                        itemToAdd = new VestItem(divisionName);
+                        itemToAdd = new VestItem(division);
                     } else {
-                        itemToAdd = new Item(itemType, divisionName);
+                        throw new IONotRecognizedException("Item type not recognized");
                     }
                     division.getItems().add(itemToAdd);
                 }

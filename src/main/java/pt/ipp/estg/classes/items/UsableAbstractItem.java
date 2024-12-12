@@ -2,33 +2,31 @@ package pt.ipp.estg.classes.items;
 
 import pt.ipp.estg.classes.Division;
 import pt.ipp.estg.enums.ItemType;
+import pt.ipp.estg.interfaces.Item;
 
-public class Item {
+public abstract class UsableAbstractItem implements Item {
 
     private String name;
     private Division division;
     private ItemType type;
-    public Item(String name, Division division) {
+
+    public UsableAbstractItem(String name, Division division, ItemType type) {
         this.name = name;
         this.division = division;
+        this.type = type;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    @Override
     public Division getLocation() {
         return division;
     }
 
-    public void setLocation(Division division) {
-        this.division = division;
-    }
-
+    @Override
     public ItemType getType() {
         return type;
     }

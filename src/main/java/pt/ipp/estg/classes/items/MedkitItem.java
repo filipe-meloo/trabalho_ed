@@ -1,19 +1,22 @@
 package pt.ipp.estg.classes.items;
 
-public class MedkitItem extends Item {
+import pt.ipp.estg.classes.Division;
+import pt.ipp.estg.enums.ItemType;
+
+public class MedkitItem extends UsableAbstractItem {
 
     private static final int MEDKIT_POINTS = 25;
 
-    public MedkitItem(String location) {
-        super("Medkit", location);
+    public MedkitItem(Division division) {
+        super("Medkit", division, ItemType.ITEM_MEDKIT);
     }
 
     public int getPoints() {
         return MEDKIT_POINTS;
     }
 
-    public void usar() {
-        System.out.println("Usei um medkit");
-    }
+    @Override
+    public void use() {
 
+    }
 }

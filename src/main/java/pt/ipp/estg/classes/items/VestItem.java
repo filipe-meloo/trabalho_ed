@@ -1,19 +1,24 @@
 package pt.ipp.estg.classes.items;
 
-public class VestItem extends Item {
+import pt.ipp.estg.classes.Division;
+import pt.ipp.estg.enums.ItemType;
+
+public class VestItem extends UsableAbstractItem {
 
     private static final int VEST_POINTS = 50;
 
-    public VestItem(String location) {
-        super("Colete", location);
+    public VestItem(Division division) {
+        super("Colete", division, ItemType.ITEM_VEST);
     }
 
-    public Integer getPoints() {
+    @Override
+    public int getPoints() {
         return VEST_POINTS;
     }
 
-    public void usar() {
-        System.out.println("Usei um vest");
+    @Override
+    public void use() {
+
     }
 
 }
