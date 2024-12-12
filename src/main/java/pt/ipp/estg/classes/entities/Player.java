@@ -58,8 +58,9 @@ public class Player extends Entity{
     public boolean useItem() throws EmptyCollectionException {
         UsableAbstractItem item = this.inventory.pop();
 
-        if (item == null)
+        if (item == null) {
             throw new ItemNullException("Item is null");
+        }
 
         if (getItemCount() == 0) {
             return false;
@@ -105,7 +106,7 @@ public class Player extends Entity{
             throw new InvalidPlayerException("Player is out of power");
         }
 
-        if (this.currentDivision != null) {
+        if (this.currentDivision == null) {
 
         }
     }

@@ -74,6 +74,13 @@ public class Mission {
         this.player = player;
     }
 
+    public boolean canStart() {
+        if (player.isValid())
+
+
+        return true;
+    }
+
     public void printInfo() {
         System.out.println("Mission: " + cod_mission);
         System.out.println("Version: " + version);
@@ -84,7 +91,7 @@ public class Mission {
     }
 
     //start game
-    public void start(Player player, Division startDivision) {
+    public void startAutomaticRun(Player player, Division startDivision) {
         this.player = player;
 
 
