@@ -1,5 +1,6 @@
 package pt.ipp.estg.classes;
 
+import Exceptions.EmptyCollectionException;
 import Structures.ArrayList;
 import pt.ipp.estg.classes.entities.Enemy;
 import pt.ipp.estg.classes.items.Item;
@@ -10,8 +11,8 @@ public class Division {
     private String name;
     private ArrayList<UsableAbstractItem> items;
     private ArrayList<Enemy> enemies;
-    private ArrayList<Division> neighbors;
     private boolean isExit;
+    private ArrayList<String> connectedDivisionNames; // Lista de nomes das divisões conectadas a esta divisão
 
     public Division(String name) {
         this(name, new ArrayList<>(), new ArrayList<>(), false);
@@ -21,7 +22,8 @@ public class Division {
         this.name = name;
         this.items = (items == null) ? new ArrayList<>() : items;
         this.enemies = (enemies == null) ? new ArrayList<>() : enemies;
-        this.isExit = isExit;
+        this.isExit = isExit; //Ela é uma saída?
+        this.connectedDivisionNames = new ArrayList<>(); // Inicializa a lista de nomes de divisões conectadas
     }
 
     public String getName() {
@@ -56,12 +58,22 @@ public class Division {
         this.isExit = isExit;
     }
 
-    public void addNeighbor(Division division) {
-        this.neighbors.add(division);
+    // Novos métodos
+    public void addConnectedDivision(String divisionName) throws EmptyCollectionException {
+        if (connectedDivisionNames == null) {
+            connectedDivisionNames = new ArrayList<>();
+        }
+        if (!connectedDivisionNames.contains(divisionName)) {
+            connectedDivisionNames.add(divisionName);
+        }
     }
 
-    public ArrayList<Division> getNeighbors() {
-        return neighbors;
+    public boolean isConnectedTo(String divisionName) throws EmptyCollectionException {
+        return connectedDivisionNames != null &&
+                connectedDivisionNames.contains(divisionName);
     }
 
+    public ArrayList<String> getConnectedDivisionNames() {
+        return connectedDivisionNames;
+    }
 }
