@@ -20,6 +20,11 @@ public class VestItem extends UsableAbstractItem {
     }
 
     @Override
+    public int getMaxStack() {
+        return 0;
+    }
+
+    @Override
     public void use(Player player) {
         player.heal(getPoints());
     }
