@@ -11,7 +11,7 @@ public class Player {
 
     private int health;
     private int power;
-    private String currentDivision;
+    private Division currentDivision; // Mudança de String para Division
 
     private ArrayStack<Item> inventory;
 
@@ -23,57 +23,38 @@ public class Player {
         this.health = health;
         this.power = power;
         this.inventory = inventory;
+        this.currentDivision = null;
     }
 
-    public String getName() {
-        return NAME;
+   //Move o jogador para uma nova divisão se a divisão atual permitir o movimento para a divisão desejada.
+    public boolean moveTo(Division targetDivision, Graph<Division> building) throws EmptyCollectionException {
+        // Verificar se a divisão atual permite movimento para a divisão desejada
+        if (currentDivision == null) {
+            currentDivision = targetDivision;
+            return true;
+        }
+
+        // Verificar se a divisão está conectada pelo nome
+        if (currentDivision.isConnectedTo(targetDivision.getName())) {
+            currentDivision = targetDivision;
+            return true;
+        }
+
+        return false;
     }
 
-    public int getHealth() {
-        return health;
+    // Método sobrecarregado para aceitar nome da divisão
+    public boolean moveTo(String divisionName, Graph<Division> building) throws EmptyCollectionException {
+        // Encontrar a divisão no grafo pelo nome
+        for (Division div : building.getVertices()) {
+            if (div.getName().equals(divisionName)) {
+                return moveTo(div, building);
+            }
+        }
+        return false;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public int getPower() {
-        return power;
-    }
-
-    public void setPower(int power) {
-        this.power = power;
-    }
-
-    public ArrayStack<Item> getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(ArrayStack<Item> inventory) {
-        this.inventory = inventory;
-    }
-
-    public void addItem(Item item) {
-        this.inventory.push(item);
-    }
-
-    public Item useItem() throws EmptyCollectionException {
-        return this.inventory.pop();
-    }
-
-    public Integer getItemCount() {
-        return this.inventory.size();
-    }
-
-    public String getCurrentDivision() {
+    public Division getCurrentDivision() {
         return currentDivision;
     }
-
-    public boolean moveTo(String division, Graph<Division> building) {
-
-        //Metodo para verificar se a divisao é ligada ou nao
-
-        return true;
-    }
-
 }
