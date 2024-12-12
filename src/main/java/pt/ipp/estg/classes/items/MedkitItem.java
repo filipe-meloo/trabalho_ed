@@ -7,13 +7,19 @@ import pt.ipp.estg.enums.ItemType;
 public class MedkitItem extends UsableAbstractItem {
 
     private static final int MEDKIT_POINTS = 25;
+    private static final String NAME = "Medkit";
+    private static final int MAX_STACK = 5;
 
     public MedkitItem(Division division) {
-        super("Medkit", division, ItemType.ITEM_MEDKIT);
+        super(NAME, division, ItemType.ITEM_MEDKIT);
     }
 
     public int getPoints() {
         return MEDKIT_POINTS;
+    }
+
+    public int getMaxStack() {
+        return MAX_STACK;
     }
 
     @Override

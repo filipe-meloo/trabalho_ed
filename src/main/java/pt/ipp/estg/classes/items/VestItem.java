@@ -7,9 +7,11 @@ import pt.ipp.estg.enums.ItemType;
 public class VestItem extends UsableAbstractItem {
 
     private static final int VEST_POINTS = 50;
+    private static final String NAME = "Colete";
+    private static final int MAX_STACK = 2;
 
     public VestItem(Division division) {
-        super("Colete", division, ItemType.ITEM_VEST);
+        super(NAME, division, ItemType.ITEM_VEST);
     }
 
     @Override

@@ -2,8 +2,10 @@ package pt.ipp.estg.classes;
 
 import Structures.ArrayList;
 import Structures.Graph;
+import Structures.LinkedQueue;
 import pt.ipp.estg.classes.entities.Enemy;
 import pt.ipp.estg.classes.entities.Player;
+import pt.ipp.estg.classes.mission.ManualSimulation;
 
 public class Mission {
 
@@ -14,7 +16,10 @@ public class Mission {
     private Graph<Division> building;
     private ArrayList<Enemy> enemies;
     private ArrayList<Division> exitsEntrys;
+
     private Player player;
+
+    // private LinkedQueue<ManualSimulation> simulations;
 
     public Mission() {
 
@@ -33,16 +38,8 @@ public class Mission {
         return cod_mission;
     }
 
-    public void setCod_mission(String cod_mission) {
-        this.cod_mission = cod_mission;
-    }
-
     public int getVersion() {
         return version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
     }
 
     public Target getTarget() {
@@ -65,16 +62,8 @@ public class Mission {
         return enemies;
     }
 
-    public void setEnemies(ArrayList<Enemy> enemies) {
-        this.enemies = enemies;
-    }
-
     public ArrayList<Division> getExitsEntrys() {
         return exitsEntrys;
-    }
-
-    public void setExitsEntrys(ArrayList<Division> exitsEntrys) {
-        this.exitsEntrys = exitsEntrys;
     }
 
     public Player getPlayer() {
@@ -94,5 +83,18 @@ public class Mission {
         System.out.println("Num. Exits Entrys: " + exitsEntrys.size());
     }
 
+    //start game
+    public void start(Player player, Division startDivision) {
+        this.player = player;
 
+
+
+
+    }
+
+
+    //TODO FUNCAO PARA REPORTAR O FIM DO JOGO
+    public void report() {
+
+    }
 }

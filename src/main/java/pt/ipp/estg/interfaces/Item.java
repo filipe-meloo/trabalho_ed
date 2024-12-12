@@ -9,5 +9,6 @@ public interface Item {
     Division getLocation();
     ItemType getType();
     int getPoints();
+    int getMaxStack();
     void use(Player player);
 }

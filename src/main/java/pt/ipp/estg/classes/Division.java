@@ -14,6 +14,8 @@ public class Division {
     private boolean isExit;
     private ArrayList<String> connectedDivisionNames; // Lista de nomes das divisões conectadas a esta divisão
 
+    //private boolean isPlayerInside;
+
     public Division(String name) {
         this(name, new ArrayList<>(), new ArrayList<>(), false);
     }

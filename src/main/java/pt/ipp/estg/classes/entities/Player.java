@@ -2,11 +2,10 @@ package pt.ipp.estg.classes.entities;
 
 import Exceptions.EmptyCollectionException;
 import Structures.ArrayStack;
+import Structures.LinkedQueue;
 import pt.ipp.estg.classes.Division;
-import pt.ipp.estg.classes.items.Item;
-import pt.ipp.estg.classes.items.MedkitItem;
 import pt.ipp.estg.classes.items.UsableAbstractItem;
-import pt.ipp.estg.classes.items.VestItem;
+import pt.ipp.estg.exceptions.InvalidPlayerException;
 import pt.ipp.estg.exceptions.InventoryFullException;
 import pt.ipp.estg.exceptions.ItemNullException;
 
@@ -18,13 +17,18 @@ public class Player extends Entity{
 
     private ArrayStack<UsableAbstractItem> inventory;
 
+    private ArrayStack<Division> path;
+    private LinkedQueue<String> actionsHistory;
+
     public Player(Integer health, Integer power) {
         this(health, power, new ArrayStack<>());
+        this.actionsHistory = new LinkedQueue<>();
     }
 
     public Player(Integer health, Integer power, ArrayStack<UsableAbstractItem> inventory) {
         super(NAME, health, power, null);
         this.inventory = inventory;
+        this.actionsHistory = new LinkedQueue<>();
     }
 
     public ArrayStack<UsableAbstractItem> getInventory() {
@@ -74,11 +78,35 @@ public class Player extends Entity{
             return false;
         }
 
-        if (division.getNeighbors().contains(this.currentDivision)) {
-            this.currentDivision = division;
-            return true;
-        }
+        //TODO Implementar moveTo direito com os neighbors
+//        if (division.getNeighbors().contains(this.currentDivision)) {
+//            this.currentDivision = division;
+//            return true;
+//        }
+
+
         return false;
     }
 
+    public LinkedQueue<String> getActionsHistory() {
+        return actionsHistory;
+    }
+
+    public Division getLastPlaceVisited() throws EmptyCollectionException {
+        return path.peek();
+    }
+
+    public void isValid() {
+        if (this.getHealth() <= 0) {
+            throw new InvalidPlayerException("Player is dead");
+        }
+
+        if (this.getPower() <= 0) {
+            throw new InvalidPlayerException("Player is out of power");
+        }
+
+        if (this.currentDivision != null) {
+
+        }
+    }
 }

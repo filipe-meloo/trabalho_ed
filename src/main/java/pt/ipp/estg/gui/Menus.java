@@ -4,38 +4,7 @@ import java.util.Scanner;
 
 public class Menus {
 
-    private static final Scanner scan = new Scanner(System.in);
-
     public Menus() {
-        printMainMenu();
-    }
-
-    public static void printMainMenu() {
-        while (true) {
-            clearScreen();
-            printLogo();
-            System.out.println("Menu Principal");
-            divider();
-
-            System.out.println("1. Carregar Próprio Mapa");
-            System.out.println("2. Escolher Mapa Pré-Definido");
-            divider();
-            System.out.println("0. Sair");
-
-            int option = getValidOption(scan);
-            scan.nextLine();
-
-            if (option == 0) break;
-
-            switch (option) {
-                case 1 -> {
-                    System.out.println("opcao 1");
-                }
-                case 2 -> {
-                    System.out.println("opcao 2");
-                }
-            }
-        }
     }
 
     /**
@@ -91,7 +60,7 @@ public class Menus {
      * Prints a divider line to separate sections in the console output.
      */
     protected static void divider() {
-        System.out.println("--------------------");
+        System.out.println("-----------*-----------");
     }
 
     /**

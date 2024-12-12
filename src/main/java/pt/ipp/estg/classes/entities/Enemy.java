@@ -11,8 +11,9 @@ public class Enemy extends Entity {
     }
 
     public boolean moveRandomly() {
-        int divisionIndex = new Random().nextInt(0, this.currentDivision.getNeighbors().size() - 1);
-        this.currentDivision = this.currentDivision.getNeighbors().get(divisionIndex);
+//        int divisionIndex = new Random().nextInt(0, this.currentDivision.getNeighbors().size() - 1);
+//        this.currentDivision = this.currentDivision.getNeighbors().get(divisionIndex);
+//        return true;
         return true;
     }
 }
