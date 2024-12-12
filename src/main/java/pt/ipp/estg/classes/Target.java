@@ -1,14 +1,15 @@
 package pt.ipp.estg.classes;
 
+import pt.ipp.estg.enums.TargetType;
+
 public class Target {
 
     private String division;
     private String type;
 
-    public Target(String division, String type) {
+    public Target(String division, TargetType type) {
         this.division = division;
-        this.type = type;
-    }
+        this.type = type;  }
 
     public String getDivision() {
         return division;

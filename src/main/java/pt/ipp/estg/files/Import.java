@@ -4,17 +4,19 @@ import Structures.ArrayList;
 import Structures.Graph;
 import pt.ipp.estg.classes.Division;
 import pt.ipp.estg.classes.entities.Enemy;
+import pt.ipp.estg.classes.entities.Player;
 import pt.ipp.estg.classes.Mission;
 import pt.ipp.estg.classes.Target;
 import pt.ipp.estg.classes.items.Item;
 import pt.ipp.estg.classes.items.MedkitItem;
 import pt.ipp.estg.classes.items.UsableAbstractItem;
 import pt.ipp.estg.classes.items.VestItem;
+import pt.ipp.estg.enums.ItemType;
+import pt.ipp.estg.enums.TargetType;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import pt.ipp.estg.exceptions.IONotRecognizedException;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -74,7 +76,7 @@ public class Import {
 
                 Division division = findDivisionByName(divisionsList, divisionName);
                 if (division != null) {
-                    Enemy enemy = new Enemy(name, (int) power, 100, divisionName);
+                    Enemy enemy = new Enemy(name, (int) power, 100, division);
                     enemies.add(enemy);
                     division.getEnemies().add(enemy);
                 }
@@ -89,17 +91,22 @@ public class Import {
 
                 Division division = findDivisionByName(divisionsList, divisionName);
                 if (division != null) {
-                    UsableAbstractItem itemToAdd;
+                    UsableAbstractItem itemToAdd = null; // Altere para UsableAbstractItem
+
                     if ("kit de vida".equalsIgnoreCase(itemType)) {
                         itemToAdd = new MedkitItem(division);
                     } else if ("colete".equalsIgnoreCase(itemType)) {
                         itemToAdd = new VestItem(division);
-                    } else {
-                        throw new IONotRecognizedException("Item type not recognized");
                     }
-                    division.getItems().add(itemToAdd);
+
+                    if (itemToAdd != null) {
+                        division.getItems().add(itemToAdd); // Adiciona à lista de itens da divisão
+                    } else {
+                        System.out.println("Tipo de item desconhecido: " + itemType);
+                    }
                 }
             }
+
 
             // Carregar entradas e saídas
             JSONArray entradasSaidas = (JSONArray) jsonObject.get("entradas-saidas");
@@ -116,7 +123,7 @@ public class Import {
             JSONObject alvo = (JSONObject) jsonObject.get("alvo");
             String targetDivision = (String) alvo.get("divisao");
             String targetType = (String) alvo.get("tipo");
-            Target target = new Target(targetDivision, targetType);
+            Target target = new Target(targetDivision, TargetType.valueOf(targetType.toUpperCase()));
 
             // Criar missão
             return new Mission(codMission, (int) version, target, building, enemies, exitsEntrys);
@@ -153,3 +160,4 @@ public class Import {
         return null;
     }
 }
+
