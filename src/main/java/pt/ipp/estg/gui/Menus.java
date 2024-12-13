@@ -1,3 +1,9 @@
+/**
+ * This class contains methods for displaying menus in the game.
+ *
+ * @author Filipe Melo - 8210187
+ * @author Ruben Santos - 8200492
+ */
 package pt.ipp.estg.gui;
 
 import java.util.Scanner;
@@ -29,7 +35,7 @@ public class Menus {
     protected static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
-        System.out.println("\n\n\n\n\n\n\n\n\n");
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 
     /**
@@ -39,7 +45,7 @@ public class Menus {
      * @return The selected option as an integer.
      */
     protected static int getValidOption(Scanner scan) {
-        System.out.print("Opção: ");
+        System.out.print("Option: ");
         while (!scan.hasNextInt()) {
             scan.next();
         }
@@ -52,7 +58,7 @@ public class Menus {
      * @param scan The Scanner instance used to read user input.
      */
     protected static void pause(Scanner scan) {
-        System.out.println("Pressione Enter para continuar...");
+        System.out.println("Press Enter to continue...");
         scan.nextLine();
     }
 
@@ -81,5 +87,13 @@ public class Menus {
         }
 
         return input;
+    }
+
+    protected static String getTag() {
+        return "[SYSTEM] ";
+    }
+
+    protected static void print(String message) {
+        System.out.println("[SYSTEM] " + message);
     }
 }

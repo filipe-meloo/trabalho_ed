@@ -1,0 +1,33 @@
+{
+  "cod-missao": "Olho de Águia",
+  "versao": 1,
+  "edificio": ["Entrada Principal", "Escada 1", "Sala de Servidores", "Oficina",
+    "Laboratório", "Corredor Sul", "Escada 2", "Armazém", "Sala de Vigilância",
+    "Refeitório", "Heliporto", "Escada de Emergência"],
+  "ligacoes": [
+    ["Entrada Principal", "Escada 1"],
+    ["Escada 1", "Sala de Servidores"],
+    ["Sala de Servidores", "Oficina"],
+    ["Oficina", "Laboratório"],
+    ["Laboratório", "Corredor Sul"],
+    ["Corredor Sul", "Escada 2"],
+    ["Escada 2", "Armazém"],
+    ["Armazém", "Sala de Vigilância"],
+    ["Sala de Vigilância", "Refeitório"],
+    ["Refeitório", "Heliporto"],
+    ["Heliporto", "Escada de Emergência"],
+    ["Escada de Emergência", "Entrada Principal"]
+  ],
+  "inimigos": [
+    {"nome": "guarda1", "poder": 10, "divisao": "Sala de Vigilância"},
+    {"nome": "guarda2", "poder": 15, "divisao": "Corredor Sul"},
+    {"nome": "guarda3", "poder": 25, "divisao": "Heliporto"}
+  ],
+  "entradas-saidas": ["Entrada Principal", "Heliporto", "Escada de Emergência"],
+  "alvo": {"divisao": "Laboratório", "tipo": "quimico"},
+  "itens": [
+    {"divisao": "Refeitório", "pontos-recuperados": 20, "tipo": "kit de vida"},
+    {"divisao": "Escada 2", "pontos-extra": 25, "tipo": "colete"},
+    {"divisao": "Sala de Servidores", "pontos-recuperados": 15, "tipo": "kit de vida"}
+  ]
+}

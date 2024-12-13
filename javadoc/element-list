@@ -1,0 +1,11 @@
+pt.ipp.estg
+pt.ipp.estg.classes.entities
+pt.ipp.estg.classes.items
+pt.ipp.estg.classes.mission
+pt.ipp.estg.enums
+pt.ipp.estg.exceptions
+pt.ipp.estg.files
+pt.ipp.estg.game
+pt.ipp.estg.gui
+pt.ipp.estg.interfaces
+pt.ipp.estg.simulations

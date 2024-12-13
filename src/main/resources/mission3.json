@@ -1,0 +1,33 @@
+{
+  "cod-missao": "Coração de Ferro",
+  "versao": 1,
+  "edificio": ["Garagem", "Corredor 1", "Sala de Operações", "Escada 1",
+    "Depósito", "Laboratório Químico", "Corredor 2", "Sala de Segurança",
+    "Heliporto", "Sala de Controlo", "Refeitório", "Escada de Emergência"],
+  "ligacoes": [
+    ["Garagem", "Corredor 1"],
+    ["Corredor 1", "Sala de Operações"],
+    ["Sala de Operações", "Escada 1"],
+    ["Escada 1", "Depósito"],
+    ["Depósito", "Laboratório Químico"],
+    ["Laboratório Químico", "Corredor 2"],
+    ["Corredor 2", "Sala de Segurança"],
+    ["Sala de Segurança", "Heliporto"],
+    ["Heliporto", "Sala de Controlo"],
+    ["Sala de Controlo", "Refeitório"],
+    ["Refeitório", "Escada de Emergência"],
+    ["Escada de Emergência", "Garagem"]
+  ],
+  "inimigos": [
+    {"nome": "sentinela alfa", "poder": 15, "divisao": "Sala de Operações"},
+    {"nome": "sentinela beta", "poder": 20, "divisao": "Sala de Segurança"},
+    {"nome": "sentinela gamma", "poder": 30, "divisao": "Heliporto"}
+  ],
+  "entradas-saidas": ["Garagem", "Heliporto", "Escada de Emergência"],
+  "alvo": {"divisao": "Sala de Controlo", "tipo": "refem"},
+  "itens": [
+    {"divisao": "Depósito", "pontos-recuperados": 20, "tipo": "kit de vida"},
+    {"divisao": "Escada 1", "pontos-extra": 25, "tipo": "colete"},
+    {"divisao": "Refeitório", "pontos-recuperados": 15, "tipo": "kit de vida"}
+  ]
+}
