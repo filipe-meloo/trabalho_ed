@@ -1,1 +1,9 @@
-{"totalEnemiesEliminated":14,"enemyDefeatRate":"70,00%","successfulMissions":3,"playerDeaths":1,"successRate":"75,00%","avgTurnsPerMission":"12,00","totalMissions":4}
+{
+  "avgTurnsPerMission": "12,00",
+  "enemyDefeatRate": "70,00%",
+  "playerDeaths": 1,
+  "successRate": "75,00%",
+  "successfulMissions": 3,
+  "totalEnemiesEliminated": 14,
+  "totalMissions": 4
+}

@@ -1,0 +1,17 @@
+{
+  "enemiesEliminated": 2,
+  "finalHealth": 113,
+  "healthPercentageLeft": "113,00%",
+  "initialHealth": 100,
+  "missionCode": "pata de coelho",
+  "path": [
+    "Corredor 2",
+    "Segurança",
+    "Hall",
+    "Escada 3",
+    "Corredor 1",
+    "Escritório 1",
+    "Escada de Emergência"
+  ],
+  "turnCount": 14
+}

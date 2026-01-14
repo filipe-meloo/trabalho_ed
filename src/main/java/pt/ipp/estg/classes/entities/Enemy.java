@@ -9,6 +9,7 @@ package pt.ipp.estg.classes.entities;
 import Exceptions.EmptyCollectionException;
 import Exceptions.NoSuchElementException;
 import Structures.ArrayList;
+import Structures.ArrayUnorderedList;
 import pt.ipp.estg.classes.mission.Division;
 
 import java.util.Random;
@@ -27,7 +28,7 @@ public class Enemy extends Entity {
      * @return true if the enemy moved, false otherwise
      */
     public boolean moveRandomly()  {
-        ArrayList<Division> possibleMoves = new ArrayList<>();
+        ArrayUnorderedList<Division> possibleMoves = new ArrayUnorderedList<>();
 
         for (Division division : this.currentDivision.getNeighbours()) {
             possibleMoves.add(division);
